@@ -1,0 +1,890 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{6D55B8EB-8B18-47D2-A9AF-6E0ED93C725B}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>MetaGens</RootNamespace>
+    <AssemblyName>MetaGens</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>x64</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Resources\icons8_dna_helix_1.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Awesomium.Core, Version=1.6.6.0, Culture=neutral, PublicKeyToken=e1a0d7c8071a5214">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Awesomium.Windows.Forms, Version=1.6.6.0, Culture=neutral, PublicKeyToken=9bd24830fbe304a0">
+      <Private>True</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Cyotek.Windows.Forms.ImageBox, Version=1.2.0.0, Culture=neutral, PublicKeyToken=58daa28b0b2de221, processorArchitecture=MSIL">
+      <HintPath>..\packages\CyotekImageBox.1.2.1\lib\net20\Cyotek.Windows.Forms.ImageBox.dll</HintPath>
+    </Reference>
+    <Reference Include="MoreLinq, Version=3.3.2.0, Culture=neutral, PublicKeyToken=384d532d7e88985d, processorArchitecture=MSIL">
+      <HintPath>..\packages\morelinq.3.3.2\lib\net451\MoreLinq.dll</HintPath>
+    </Reference>
+    <Reference Include="Renci.SshNet, Version=2020.0.0.0, Culture=neutral, PublicKeyToken=1cee9f8bde3db106, processorArchitecture=MSIL">
+      <HintPath>..\packages\SSH.NET.2020.0.0\lib\net40\Renci.SshNet.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="System.IO.Compression.ZipFile, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.Compression.ZipFile.4.3.0\lib\net46\System.IO.Compression.ZipFile.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Management" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Runtime.Serialization.Formatters.Soap" />
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Serialization" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Bio.cs" />
+    <Compile Include="FormDownloadRef.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormDownloadRef.Designer.cs">
+      <DependentUpon>FormDownloadRef.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormDownloadSample.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormDownloadSample.Designer.cs">
+      <DependentUpon>FormDownloadSample.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormInfo.Designer.cs">
+      <DependentUpon>FormInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormTextBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormTextBox.Designer.cs">
+      <DependentUpon>FormTextBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormViewSeq.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormViewSeq.Designer.cs">
+      <DependentUpon>FormViewSeq.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PanelQuery.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PanelQuery.Designer.cs">
+      <DependentUpon>PanelQuery.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PanelDatabaseFilter.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PanelDatabaseFilter.Designer.cs">
+      <DependentUpon>PanelDatabaseFilter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Statics.cs" />
+    <Compile Include="FormMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormMain.Designer.cs">
+      <DependentUpon>FormMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PanelDataExplorer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PanelDataExplorer.Designer.cs">
+      <DependentUpon>PanelDataExplorer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PanelDownloadSample.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PanelDownloadSample.Designer.cs">
+      <DependentUpon>PanelDownloadSample.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PanelQC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PanelQC.Designer.cs">
+      <DependentUpon>PanelQC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PanelProject.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PanelProject.Designer.cs">
+      <DependentUpon>PanelProject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PanelStart.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PanelStart.Designer.cs">
+      <DependentUpon>PanelStart.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="SSH.cs" />
+    <Compile Include="WinFormsUtils.cs" />
+    <EmbeddedResource Include="FormDownloadRef.resx">
+      <DependentUpon>FormDownloadRef.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormDownloadSample.resx">
+      <DependentUpon>FormDownloadSample.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormInfo.resx">
+      <DependentUpon>FormInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormMain.resx">
+      <DependentUpon>FormMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormTextBox.resx">
+      <DependentUpon>FormTextBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormViewSeq.resx">
+      <DependentUpon>FormViewSeq.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PanelQuery.resx">
+      <DependentUpon>PanelQuery.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PanelDatabaseFilter.resx">
+      <DependentUpon>PanelDatabaseFilter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PanelDataExplorer.resx">
+      <DependentUpon>PanelDataExplorer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PanelDownloadSample.resx">
+      <DependentUpon>PanelDownloadSample.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PanelQC.resx">
+      <DependentUpon>PanelQC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PanelProject.resx">
+      <DependentUpon>PanelProject.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PanelStart.resx">
+      <DependentUpon>PanelStart.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="Data\Bin\bowtie2-2.3.4-mingw-x86_64\AUTHORS" />
+    <None Include="Data\Bin\bowtie2-2.3.4-mingw-x86_64\bowtie2" />
+    <None Include="Data\Bin\bowtie2-2.3.4-mingw-x86_64\bowtie2-build" />
+    <None Include="Data\Bin\bowtie2-2.3.4-mingw-x86_64\bowtie2-build.bat" />
+    <None Include="Data\Bin\bowtie2-2.3.4-mingw-x86_64\bowtie2-inspect" />
+    <None Include="Data\Bin\bowtie2-2.3.4-mingw-x86_64\bowtie2-inspect.bat" />
+    <None Include="Data\Bin\bowtie2-2.3.4-mingw-x86_64\bowtie2.bat" />
+    <None Include="Data\Bin\bowtie2-2.3.4-mingw-x86_64\doc\README" />
+    <None Include="Data\Bin\bowtie2-2.3.4-mingw-x86_64\example\index\lambda_virus.1.bt2" />
+    <None Include="Data\Bin\bowtie2-2.3.4-mingw-x86_64\example\index\lambda_virus.2.bt2" />
+    <None Include="Data\Bin\bowtie2-2.3.4-mingw-x86_64\example\index\lambda_virus.3.bt2" />
+    <None Include="Data\Bin\bowtie2-2.3.4-mingw-x86_64\example\index\lambda_virus.4.bt2" />
+    <None Include="Data\Bin\bowtie2-2.3.4-mingw-x86_64\example\index\lambda_virus.rev.1.bt2" />
+    <None Include="Data\Bin\bowtie2-2.3.4-mingw-x86_64\example\index\lambda_virus.rev.2.bt2" />
+    <None Include="Data\Bin\bowtie2-2.3.4-mingw-x86_64\example\reads\longreads.fq" />
+    <None Include="Data\Bin\bowtie2-2.3.4-mingw-x86_64\example\reads\reads_1.fq" />
+    <None Include="Data\Bin\bowtie2-2.3.4-mingw-x86_64\example\reads\reads_2.fq" />
+    <None Include="Data\Bin\bowtie2-2.3.4-mingw-x86_64\example\reads\simulate.pl" />
+    <None Include="Data\Bin\bowtie2-2.3.4-mingw-x86_64\example\reference\lambda_virus.fa" />
+    <None Include="Data\Bin\bowtie2-2.3.4-mingw-x86_64\LICENSE" />
+    <None Include="Data\Bin\bowtie2-2.3.4-mingw-x86_64\MANUAL" />
+    <None Include="Data\Bin\bowtie2-2.3.4-mingw-x86_64\MANUAL.markdown" />
+    <None Include="Data\Bin\bowtie2-2.3.4-mingw-x86_64\NEWS" />
+    <None Include="Data\Bin\bowtie2-2.3.4-mingw-x86_64\scripts\convert_quals.pl" />
+    <None Include="Data\Bin\bowtie2-2.3.4-mingw-x86_64\scripts\gen_2b_occ_lookup.pl" />
+    <None Include="Data\Bin\bowtie2-2.3.4-mingw-x86_64\scripts\gen_occ_lookup.pl" />
+    <None Include="Data\Bin\bowtie2-2.3.4-mingw-x86_64\scripts\gen_solqual_lookup.pl" />
+    <None Include="Data\Bin\bowtie2-2.3.4-mingw-x86_64\scripts\infer_fraglen.pl" />
+    <None Include="Data\Bin\bowtie2-2.3.4-mingw-x86_64\scripts\make_a_thaliana_tair.sh" />
+    <None Include="Data\Bin\bowtie2-2.3.4-mingw-x86_64\scripts\make_b_taurus_UMD3.sh" />
+    <None Include="Data\Bin\bowtie2-2.3.4-mingw-x86_64\scripts\make_canFam2.sh" />
+    <None Include="Data\Bin\bowtie2-2.3.4-mingw-x86_64\scripts\make_c_elegans.sh" />
+    <None Include="Data\Bin\bowtie2-2.3.4-mingw-x86_64\scripts\make_d_melanogaster.sh" />
+    <None Include="Data\Bin\bowtie2-2.3.4-mingw-x86_64\scripts\make_e_coli.sh" />
+    <None Include="Data\Bin\bowtie2-2.3.4-mingw-x86_64\scripts\make_hg18.sh" />
+    <None Include="Data\Bin\bowtie2-2.3.4-mingw-x86_64\scripts\make_hg19.sh" />
+    <None Include="Data\Bin\bowtie2-2.3.4-mingw-x86_64\scripts\make_h_sapiens_ncbi36.sh" />
+    <None Include="Data\Bin\bowtie2-2.3.4-mingw-x86_64\scripts\make_h_sapiens_ncbi37.sh" />
+    <None Include="Data\Bin\bowtie2-2.3.4-mingw-x86_64\scripts\make_mm10.sh" />
+    <None Include="Data\Bin\bowtie2-2.3.4-mingw-x86_64\scripts\make_mm9.sh" />
+    <None Include="Data\Bin\bowtie2-2.3.4-mingw-x86_64\scripts\make_m_musculus_ncbi37.sh" />
+    <None Include="Data\Bin\bowtie2-2.3.4-mingw-x86_64\scripts\make_rn4.sh" />
+    <None Include="Data\Bin\bowtie2-2.3.4-mingw-x86_64\scripts\make_s_cerevisiae.sh" />
+    <None Include="Data\Bin\bowtie2-2.3.4-mingw-x86_64\TUTORIAL" />
+    <None Include="Data\Bin\bowtie2-2.3.4-mingw-x86_64\VERSION" />
+    <None Include="Data\Bin\FastQC\fastqc" />
+    <None Include="Data\Bin\FastQC\Help\1 Introduction\.svn\entries" />
+    <None Include="Data\Bin\FastQC\Help\1 Introduction\.svn\text-base\1.1 What is FastQC.html.svn-base" />
+    <None Include="Data\Bin\FastQC\Help\2 Basic Operations\.svn\entries" />
+    <None Include="Data\Bin\FastQC\Help\2 Basic Operations\.svn\text-base\2.1 Opening a sequence file.html.svn-base" />
+    <None Include="Data\Bin\FastQC\Help\2 Basic Operations\.svn\text-base\2.2 Evaluating Results.html.svn-base" />
+    <None Include="Data\Bin\FastQC\Help\2 Basic Operations\.svn\text-base\2.3 Saving a Report.html.svn-base" />
+    <None Include="Data\Bin\FastQC\Help\3 Analysis Modules\.svn\entries" />
+    <None Include="Data\Bin\FastQC\Help\3 Analysis Modules\.svn\prop-base\duplication_levels.png.svn-base" />
+    <None Include="Data\Bin\FastQC\Help\3 Analysis Modules\.svn\prop-base\kmer_profiles.png.svn-base" />
+    <None Include="Data\Bin\FastQC\Help\3 Analysis Modules\.svn\prop-base\per_base_gc_content.png.svn-base" />
+    <None Include="Data\Bin\FastQC\Help\3 Analysis Modules\.svn\prop-base\per_base_n_content.png.svn-base" />
+    <None Include="Data\Bin\FastQC\Help\3 Analysis Modules\.svn\prop-base\per_base_quality.png.svn-base" />
+    <None Include="Data\Bin\FastQC\Help\3 Analysis Modules\.svn\prop-base\per_base_sequence_content.png.svn-base" />
+    <None Include="Data\Bin\FastQC\Help\3 Analysis Modules\.svn\prop-base\per_sequence_gc_content.png.svn-base" />
+    <None Include="Data\Bin\FastQC\Help\3 Analysis Modules\.svn\prop-base\per_sequence_quality.png.svn-base" />
+    <None Include="Data\Bin\FastQC\Help\3 Analysis Modules\.svn\prop-base\per_tile_quality.png.svn-base" />
+    <None Include="Data\Bin\FastQC\Help\3 Analysis Modules\.svn\prop-base\sequence_length_distribution.png.svn-base" />
+    <None Include="Data\Bin\FastQC\Help\3 Analysis Modules\.svn\text-base\1 Basic Statistics.html.svn-base" />
+    <None Include="Data\Bin\FastQC\Help\3 Analysis Modules\.svn\text-base\10 Adapter Content.html.svn-base" />
+    <None Include="Data\Bin\FastQC\Help\3 Analysis Modules\.svn\text-base\11 Kmer Content.html.svn-base" />
+    <None Include="Data\Bin\FastQC\Help\3 Analysis Modules\.svn\text-base\12 Per Tile Sequence Quality.html.svn-base" />
+    <None Include="Data\Bin\FastQC\Help\3 Analysis Modules\.svn\text-base\2 Per Base Sequence Quality.html.svn-base" />
+    <None Include="Data\Bin\FastQC\Help\3 Analysis Modules\.svn\text-base\3 Per Sequence Quality Scores.html.svn-base" />
+    <None Include="Data\Bin\FastQC\Help\3 Analysis Modules\.svn\text-base\4 Per Base Sequence Content.html.svn-base" />
+    <None Include="Data\Bin\FastQC\Help\3 Analysis Modules\.svn\text-base\5 Per Sequence GC Content.html.svn-base" />
+    <None Include="Data\Bin\FastQC\Help\3 Analysis Modules\.svn\text-base\6 Per Base N Content.html.svn-base" />
+    <None Include="Data\Bin\FastQC\Help\3 Analysis Modules\.svn\text-base\7 Sequence Length Distribution.html.svn-base" />
+    <None Include="Data\Bin\FastQC\Help\3 Analysis Modules\.svn\text-base\8 Duplicate Sequences.html.svn-base" />
+    <None Include="Data\Bin\FastQC\Help\3 Analysis Modules\.svn\text-base\9 Overrepresented Sequences.html.svn-base" />
+    <None Include="Data\Bin\FastQC\Help\3 Analysis Modules\.svn\text-base\duplication_levels.png.svn-base" />
+    <None Include="Data\Bin\FastQC\Help\3 Analysis Modules\.svn\text-base\kmer_profiles.png.svn-base" />
+    <None Include="Data\Bin\FastQC\Help\3 Analysis Modules\.svn\text-base\per_base_gc_content.png.svn-base" />
+    <None Include="Data\Bin\FastQC\Help\3 Analysis Modules\.svn\text-base\per_base_n_content.png.svn-base" />
+    <None Include="Data\Bin\FastQC\Help\3 Analysis Modules\.svn\text-base\per_base_quality.png.svn-base" />
+    <None Include="Data\Bin\FastQC\Help\3 Analysis Modules\.svn\text-base\per_base_sequence_content.png.svn-base" />
+    <None Include="Data\Bin\FastQC\Help\3 Analysis Modules\.svn\text-base\per_sequence_gc_content.png.svn-base" />
+    <None Include="Data\Bin\FastQC\Help\3 Analysis Modules\.svn\text-base\per_sequence_quality.png.svn-base" />
+    <None Include="Data\Bin\FastQC\Help\3 Analysis Modules\.svn\text-base\per_tile_quality.png.svn-base" />
+    <None Include="Data\Bin\FastQC\Help\3 Analysis Modules\.svn\text-base\sequence_length_distribution.png.svn-base" />
+    <None Include="Data\Bin\FastQC\LICENSE" />
+    <None Include="Data\Bin\FastQC\net\sourceforge\iharder\base64\Base64%241.class" />
+    <None Include="Data\Bin\FastQC\net\sourceforge\iharder\base64\Base64%24InputStream.class" />
+    <None Include="Data\Bin\FastQC\net\sourceforge\iharder\base64\Base64%24OutputStream.class" />
+    <None Include="Data\Bin\FastQC\net\sourceforge\iharder\base64\Base64.class" />
+    <None Include="Data\Bin\FastQC\org\apache\commons\math3\analysis\solvers\AbstractUnivariateSolver.class" />
+    <None Include="Data\Bin\FastQC\org\apache\commons\math3\analysis\solvers\AllowedSolution.class" />
+    <None Include="Data\Bin\FastQC\org\apache\commons\math3\analysis\solvers\BaseAbstractUnivariateSolver.class" />
+    <None Include="Data\Bin\FastQC\org\apache\commons\math3\analysis\solvers\BaseUnivariateSolver.class" />
+    <None Include="Data\Bin\FastQC\org\apache\commons\math3\analysis\solvers\BracketedUnivariateSolver.class" />
+    <None Include="Data\Bin\FastQC\org\apache\commons\math3\analysis\solvers\BrentSolver.class" />
+    <None Include="Data\Bin\FastQC\org\apache\commons\math3\analysis\solvers\UnivariateSolver.class" />
+    <None Include="Data\Bin\FastQC\org\apache\commons\math3\analysis\solvers\UnivariateSolverUtils.class" />
+    <None Include="Data\Bin\FastQC\org\apache\commons\math3\analysis\UnivariateFunction.class" />
+    <None Include="Data\Bin\FastQC\org\apache\commons\math3\distribution\AbstractIntegerDistribution.class" />
+    <None Include="Data\Bin\FastQC\org\apache\commons\math3\distribution\AbstractRealDistribution%241.class" />
+    <None Include="Data\Bin\FastQC\org\apache\commons\math3\distribution\AbstractRealDistribution.class" />
+    <None Include="Data\Bin\FastQC\org\apache\commons\math3\distribution\BetaDistribution.class" />
+    <None Include="Data\Bin\FastQC\org\apache\commons\math3\distribution\BinomialDistribution.class" />
+    <None Include="Data\Bin\FastQC\org\apache\commons\math3\distribution\CauchyDistribution.class" />
+    <None Include="Data\Bin\FastQC\org\apache\commons\math3\distribution\ChiSquaredDistribution.class" />
+    <None Include="Data\Bin\FastQC\org\apache\commons\math3\distribution\FDistribution.class" />
+    <None Include="Data\Bin\FastQC\org\apache\commons\math3\distribution\GammaDistribution.class" />
+    <None Include="Data\Bin\FastQC\org\apache\commons\math3\distribution\HypergeometricDistribution.class" />
+    <None Include="Data\Bin\FastQC\org\apache\commons\math3\distribution\IntegerDistribution.class" />
+    <None Include="Data\Bin\FastQC\org\apache\commons\math3\distribution\NormalDistribution.class" />
+    <None Include="Data\Bin\FastQC\org\apache\commons\math3\distribution\PascalDistribution.class" />
+    <None Include="Data\Bin\FastQC\org\apache\commons\math3\distribution\PoissonDistribution.class" />
+    <None Include="Data\Bin\FastQC\org\apache\commons\math3\distribution\RealDistribution.class" />
+    <None Include="Data\Bin\FastQC\org\apache\commons\math3\distribution\SaddlePointExpansion.class" />
+    <None Include="Data\Bin\FastQC\org\apache\commons\math3\distribution\TDistribution.class" />
+    <None Include="Data\Bin\FastQC\org\apache\commons\math3\distribution\WeibullDistribution.class" />
+    <None Include="Data\Bin\FastQC\org\apache\commons\math3\distribution\ZipfDistribution.class" />
+    <None Include="Data\Bin\FastQC\org\apache\commons\math3\exception\ConvergenceException.class" />
+    <None Include="Data\Bin\FastQC\org\apache\commons\math3\exception\DimensionMismatchException.class" />
+    <None Include="Data\Bin\FastQC\org\apache\commons\math3\exception\MathArithmeticException.class" />
+    <None Include="Data\Bin\FastQC\org\apache\commons\math3\exception\MathIllegalArgumentException.class" />
+    <None Include="Data\Bin\FastQC\org\apache\commons\math3\exception\MathIllegalNumberException.class" />
+    <None Include="Data\Bin\FastQC\org\apache\commons\math3\exception\MathIllegalStateException.class" />
+    <None Include="Data\Bin\FastQC\org\apache\commons\math3\exception\MathInternalError.class" />
+    <None Include="Data\Bin\FastQC\org\apache\commons\math3\exception\MaxCountExceededException.class" />
+    <None Include="Data\Bin\FastQC\org\apache\commons\math3\exception\NoBracketingException.class" />
+    <None Include="Data\Bin\FastQC\org\apache\commons\math3\exception\NotFiniteNumberException.class" />
+    <None Include="Data\Bin\FastQC\org\apache\commons\math3\exception\NotPositiveException.class" />
+    <None Include="Data\Bin\FastQC\org\apache\commons\math3\exception\NotStrictlyPositiveException.class" />
+    <None Include="Data\Bin\FastQC\org\apache\commons\math3\exception\NullArgumentException.class" />
+    <None Include="Data\Bin\FastQC\org\apache\commons\math3\exception\NumberIsTooLargeException.class" />
+    <None Include="Data\Bin\FastQC\org\apache\commons\math3\exception\NumberIsTooSmallException.class" />
+    <None Include="Data\Bin\FastQC\org\apache\commons\math3\exception\OutOfRangeException.class" />
+    <None Include="Data\Bin\FastQC\org\apache\commons\math3\exception\TooManyEvaluationsException.class" />
+    <None Include="Data\Bin\FastQC\org\apache\commons\math3\exception\util\ArgUtils.class" />
+    <None Include="Data\Bin\FastQC\org\apache\commons\math3\exception\util\ExceptionContext.class" />
+    <None Include="Data\Bin\FastQC\org\apache\commons\math3\exception\util\ExceptionContextProvider.class" />
+    <None Include="Data\Bin\FastQC\org\apache\commons\math3\exception\util\Localizable.class" />
+    <None Include="Data\Bin\FastQC\org\apache\commons\math3\exception\util\LocalizedFormats.class" />
+    <None Include="Data\Bin\FastQC\org\apache\commons\math3\random\AbstractWell.class" />
+    <None Include="Data\Bin\FastQC\org\apache\commons\math3\random\BitsStreamGenerator.class" />
+    <None Include="Data\Bin\FastQC\org\apache\commons\math3\random\RandomData.class" />
+    <None Include="Data\Bin\FastQC\org\apache\commons\math3\random\RandomDataImpl.class" />
+    <None Include="Data\Bin\FastQC\org\apache\commons\math3\random\RandomGenerator.class" />
+    <None Include="Data\Bin\FastQC\org\apache\commons\math3\random\Well19937c.class" />
+    <None Include="Data\Bin\FastQC\org\apache\commons\math3\special\Beta%241.class" />
+    <None Include="Data\Bin\FastQC\org\apache\commons\math3\special\Beta.class" />
+    <None Include="Data\Bin\FastQC\org\apache\commons\math3\special\Erf.class" />
+    <None Include="Data\Bin\FastQC\org\apache\commons\math3\special\Gamma%241.class" />
+    <None Include="Data\Bin\FastQC\org\apache\commons\math3\special\Gamma.class" />
+    <None Include="Data\Bin\FastQC\org\apache\commons\math3\util\ArithmeticUtils.class" />
+    <None Include="Data\Bin\FastQC\org\apache\commons\math3\util\ContinuedFraction.class" />
+    <None Include="Data\Bin\FastQC\org\apache\commons\math3\util\DoubleArray.class" />
+    <None Include="Data\Bin\FastQC\org\apache\commons\math3\util\FastMath%24ExpFracTable.class" />
+    <None Include="Data\Bin\FastQC\org\apache\commons\math3\util\FastMath%24ExpIntTable.class" />
+    <None Include="Data\Bin\FastQC\org\apache\commons\math3\util\FastMath%24lnMant.class" />
+    <None Include="Data\Bin\FastQC\org\apache\commons\math3\util\FastMath.class" />
+    <None Include="Data\Bin\FastQC\org\apache\commons\math3\util\FastMathCalc.class" />
+    <None Include="Data\Bin\FastQC\org\apache\commons\math3\util\FastMathLiteralArrays.class" />
+    <None Include="Data\Bin\FastQC\org\apache\commons\math3\util\Incrementor%241.class" />
+    <None Include="Data\Bin\FastQC\org\apache\commons\math3\util\Incrementor%24MaxCountExceededCallback.class" />
+    <None Include="Data\Bin\FastQC\org\apache\commons\math3\util\Incrementor.class" />
+    <None Include="Data\Bin\FastQC\org\apache\commons\math3\util\MathUtils.class" />
+    <None Include="Data\Bin\FastQC\org\apache\commons\math3\util\Precision.class" />
+    <None Include="Data\Bin\FastQC\org\apache\commons\math3\util\ResizableDoubleArray.class" />
+    <None Include="Data\Bin\FastQC\README.md" />
+    <None Include="Data\Bin\FastQC\run_fastqc.bat" />
+    <None Include="Data\Bin\FastQC\uk\ac\babraham\FastQC\Analysis\AnalysisListener.class" />
+    <None Include="Data\Bin\FastQC\uk\ac\babraham\FastQC\Analysis\AnalysisQueue.class" />
+    <None Include="Data\Bin\FastQC\uk\ac\babraham\FastQC\Analysis\AnalysisRunner.class" />
+    <None Include="Data\Bin\FastQC\uk\ac\babraham\FastQC\Analysis\OfflineRunner.class" />
+    <None Include="Data\Bin\FastQC\uk\ac\babraham\FastQC\Dialogs\AboutDialog%241.class" />
+    <None Include="Data\Bin\FastQC\uk\ac\babraham\FastQC\Dialogs\AboutDialog.class" />
+    <None Include="Data\Bin\FastQC\uk\ac\babraham\FastQC\Dialogs\FastQCTitlePanel%24SmoothJLabel.class" />
+    <None Include="Data\Bin\FastQC\uk\ac\babraham\FastQC\Dialogs\FastQCTitlePanel.class" />
+    <None Include="Data\Bin\FastQC\uk\ac\babraham\FastQC\Dialogs\WelcomePanel.class" />
+    <None Include="Data\Bin\FastQC\uk\ac\babraham\FastQC\FastQCApplication%241.class" />
+    <None Include="Data\Bin\FastQC\uk\ac\babraham\FastQC\FastQCApplication.class" />
+    <None Include="Data\Bin\FastQC\uk\ac\babraham\FastQC\FastQCConfig.class" />
+    <None Include="Data\Bin\FastQC\uk\ac\babraham\FastQC\FastQCMenuBar.class" />
+    <None Include="Data\Bin\FastQC\uk\ac\babraham\FastQC\FileFilters\BAMFileFilter.class" />
+    <None Include="Data\Bin\FastQC\uk\ac\babraham\FastQC\FileFilters\CasavaFastQFileFilter.class" />
+    <None Include="Data\Bin\FastQC\uk\ac\babraham\FastQC\FileFilters\FastQFileFilter.class" />
+    <None Include="Data\Bin\FastQC\uk\ac\babraham\FastQC\FileFilters\GobyFileFilter.class" />
+    <None Include="Data\Bin\FastQC\uk\ac\babraham\FastQC\FileFilters\MappedBAMFileFilter.class" />
+    <None Include="Data\Bin\FastQC\uk\ac\babraham\FastQC\FileFilters\SequenceFileFilter.class" />
+    <None Include="Data\Bin\FastQC\uk\ac\babraham\FastQC\Graphs\BaseGroup.class" />
+    <None Include="Data\Bin\FastQC\uk\ac\babraham\FastQC\Graphs\LineGraph.class" />
+    <None Include="Data\Bin\FastQC\uk\ac\babraham\FastQC\Graphs\QualityBoxPlot.class" />
+    <None Include="Data\Bin\FastQC\uk\ac\babraham\FastQC\Graphs\TileGraph.class" />
+    <None Include="Data\Bin\FastQC\uk\ac\babraham\FastQC\Help\HelpDialog.class" />
+    <None Include="Data\Bin\FastQC\uk\ac\babraham\FastQC\Help\HelpIndexRoot%24FileSorter.class" />
+    <None Include="Data\Bin\FastQC\uk\ac\babraham\FastQC\Help\HelpIndexRoot.class" />
+    <None Include="Data\Bin\FastQC\uk\ac\babraham\FastQC\Help\HelpPage.class" />
+    <None Include="Data\Bin\FastQC\uk\ac\babraham\FastQC\Help\HelpPageDisplay%24HelpEditor.class" />
+    <None Include="Data\Bin\FastQC\uk\ac\babraham\FastQC\Help\HelpPageDisplay.class" />
+    <None Include="Data\Bin\FastQC\uk\ac\babraham\FastQC\Help\HelpSearchPanel.class" />
+    <None Include="Data\Bin\FastQC\uk\ac\babraham\FastQC\Modules\AbstractQCModule.class" />
+    <None Include="Data\Bin\FastQC\uk\ac\babraham\FastQC\Modules\AdapterContent%24Adapter.class" />
+    <None Include="Data\Bin\FastQC\uk\ac\babraham\FastQC\Modules\AdapterContent%24ResultsTable.class" />
+    <None Include="Data\Bin\FastQC\uk\ac\babraham\FastQC\Modules\AdapterContent.class" />
+    <None Include="Data\Bin\FastQC\uk\ac\babraham\FastQC\Modules\BasicStats%24ResultsTable.class" />
+    <None Include="Data\Bin\FastQC\uk\ac\babraham\FastQC\Modules\BasicStats.class" />
+    <None Include="Data\Bin\FastQC\uk\ac\babraham\FastQC\Modules\DuplicationLevel.class" />
+    <None Include="Data\Bin\FastQC\uk\ac\babraham\FastQC\Modules\GCModel\GCModel.class" />
+    <None Include="Data\Bin\FastQC\uk\ac\babraham\FastQC\Modules\GCModel\GCModelValue.class" />
+    <None Include="Data\Bin\FastQC\uk\ac\babraham\FastQC\Modules\KmerContent%24Kmer.class" />
+    <None Include="Data\Bin\FastQC\uk\ac\babraham\FastQC\Modules\KmerContent%24ResultsTable.class" />
+    <None Include="Data\Bin\FastQC\uk\ac\babraham\FastQC\Modules\KmerContent.class" />
+    <None Include="Data\Bin\FastQC\uk\ac\babraham\FastQC\Modules\ModuleConfig.class" />
+    <None Include="Data\Bin\FastQC\uk\ac\babraham\FastQC\Modules\ModuleFactory.class" />
+    <None Include="Data\Bin\FastQC\uk\ac\babraham\FastQC\Modules\NContent.class" />
+    <None Include="Data\Bin\FastQC\uk\ac\babraham\FastQC\Modules\OverRepresentedSeqs%24OverrepresentedSeq.class" />
+    <None Include="Data\Bin\FastQC\uk\ac\babraham\FastQC\Modules\OverRepresentedSeqs%24ResultsTable.class" />
+    <None Include="Data\Bin\FastQC\uk\ac\babraham\FastQC\Modules\OverRepresentedSeqs.class" />
+    <None Include="Data\Bin\FastQC\uk\ac\babraham\FastQC\Modules\PerBaseQualityScores.class" />
+    <None Include="Data\Bin\FastQC\uk\ac\babraham\FastQC\Modules\PerBaseSequenceContent.class" />
+    <None Include="Data\Bin\FastQC\uk\ac\babraham\FastQC\Modules\PerSequenceGCContent.class" />
+    <None Include="Data\Bin\FastQC\uk\ac\babraham\FastQC\Modules\PerSequenceQualityScores.class" />
+    <None Include="Data\Bin\FastQC\uk\ac\babraham\FastQC\Modules\PerTileQualityScores.class" />
+    <None Include="Data\Bin\FastQC\uk\ac\babraham\FastQC\Modules\QCModule.class" />
+    <None Include="Data\Bin\FastQC\uk\ac\babraham\FastQC\Modules\SequenceLengthDistribution.class" />
+    <None Include="Data\Bin\FastQC\uk\ac\babraham\FastQC\Report\HTMLReportArchive.class" />
+    <None Include="Data\Bin\FastQC\uk\ac\babraham\FastQC\Results\ResultsPanel%24ModuleRenderer.class" />
+    <None Include="Data\Bin\FastQC\uk\ac\babraham\FastQC\Results\ResultsPanel.class" />
+    <None Include="Data\Bin\FastQC\uk\ac\babraham\FastQC\Sequence\BAMFile.class" />
+    <None Include="Data\Bin\FastQC\uk\ac\babraham\FastQC\Sequence\Contaminant\Contaminant.class" />
+    <None Include="Data\Bin\FastQC\uk\ac\babraham\FastQC\Sequence\Contaminant\ContaminantHit.class" />
+    <None Include="Data\Bin\FastQC\uk\ac\babraham\FastQC\Sequence\Contaminant\ContaminentFinder.class" />
+    <None Include="Data\Bin\FastQC\uk\ac\babraham\FastQC\Sequence\Fast5File.class" />
+    <None Include="Data\Bin\FastQC\uk\ac\babraham\FastQC\Sequence\FastQFile.class" />
+    <None Include="Data\Bin\FastQC\uk\ac\babraham\FastQC\Sequence\QualityEncoding\PhredEncoding.class" />
+    <None Include="Data\Bin\FastQC\uk\ac\babraham\FastQC\Sequence\Sequence.class" />
+    <None Include="Data\Bin\FastQC\uk\ac\babraham\FastQC\Sequence\SequenceFactory.class" />
+    <None Include="Data\Bin\FastQC\uk\ac\babraham\FastQC\Sequence\SequenceFile.class" />
+    <None Include="Data\Bin\FastQC\uk\ac\babraham\FastQC\Sequence\SequenceFileGroup.class" />
+    <None Include="Data\Bin\FastQC\uk\ac\babraham\FastQC\Sequence\SequenceFormatException.class" />
+    <None Include="Data\Bin\FastQC\uk\ac\babraham\FastQC\Statistics\NormalDistribution.class" />
+    <None Include="Data\Bin\FastQC\uk\ac\babraham\FastQC\Statistics\PearsonCorrelation.class" />
+    <None Include="Data\Bin\FastQC\uk\ac\babraham\FastQC\Utilities\CasavaBasename.class" />
+    <None Include="Data\Bin\FastQC\uk\ac\babraham\FastQC\Utilities\HotColdColourGradient.class" />
+    <None Include="Data\Bin\FastQC\uk\ac\babraham\FastQC\Utilities\ImageToBase64.class" />
+    <None Include="Data\Bin\FastQC\uk\ac\babraham\FastQC\Utilities\MultiMemberGZIPInputStream.class" />
+    <None Include="Data\Bin\FastQC\uk\ac\babraham\FastQC\Utilities\NameFormatException.class" />
+    <None Include="Data\Bin\FastQC\uk\ac\babraham\FastQC\Utilities\NanoporeBasename.class" />
+    <None Include="Data\Bin\FastQC\uk\ac\babraham\FastQC\Utilities\QualityCount.class" />
+    <None Include="Data\Bin\FastQC\uk\ac\babraham\FastQC\Utilities\RGB.class" />
+    <None Include="Data\Bin\SAMtools\blast2sam.pl" />
+    <None Include="Data\Bin\SAMtools\bowtie2sam.pl" />
+    <None Include="Data\Bin\SAMtools\color-chrs.pl" />
+    <None Include="Data\Bin\SAMtools\export2sam.pl" />
+    <None Include="Data\Bin\SAMtools\interpolate_sam.pl" />
+    <None Include="Data\Bin\SAMtools\novo2sam.pl" />
+    <None Include="Data\Bin\SAMtools\plot-bamstats" />
+    <None Include="Data\Bin\SAMtools\plot-vcfstats" />
+    <None Include="Data\Bin\SAMtools\psl2sam.pl" />
+    <None Include="Data\Bin\SAMtools\sam2vcf.pl" />
+    <None Include="Data\Bin\SAMtools\samtools.pl" />
+    <None Include="Data\Bin\SAMtools\seq_cache_populate.pl" />
+    <None Include="Data\Bin\SAMtools\soap2sam.pl" />
+    <None Include="Data\Bin\SAMtools\vcfutils.pl" />
+    <None Include="Data\Bin\SAMtools\wgsim_eval.pl" />
+    <None Include="Data\Bin\SAMtools\zoom2sam.pl" />
+    <None Include="Data\Bin\Scripts\RemoveHost.bat">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Data\Bin\Scripts\Trim.bat">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Data\Bin\Scripts\FastQC.bat">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Data\Bin\Scripts\DownloadSampleSRA.bat">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Data\Bin\sratoolkit.2.9.6-1-win64\bin\ncbi\certs.kfg" />
+    <None Include="Data\Bin\sratoolkit.2.9.6-1-win64\bin\ncbi\default.kfg" />
+    <None Include="Data\Bin\sratoolkit.2.9.6-1-win64\bin\ncbi\vdb-copy.kfg" />
+    <None Include="Data\Bin\sratoolkit.2.9.6-1-win64\example\perl\base-stats.pl" />
+    <None Include="Data\Bin\sratoolkit.2.9.6-1-win64\example\perl\dump-reference.pl" />
+    <None Include="Data\Bin\sratoolkit.2.9.6-1-win64\example\perl\gene-lookup.pl" />
+    <None Include="Data\Bin\sratoolkit.2.9.6-1-win64\example\perl\mismatch-stats.pl" />
+    <None Include="Data\Bin\sratoolkit.2.9.6-1-win64\example\perl\quality-stats.pl" />
+    <None Include="Data\Bin\sratoolkit.2.9.6-1-win64\example\perl\simplefastq.pl" />
+    <None Include="Data\Bin\sratoolkit.2.9.6-1-win64\example\perl\splitfastq.pl" />
+    <None Include="Data\Bin\sratoolkit.2.9.6-1-win64\schema\align\align.vschema" />
+    <None Include="Data\Bin\sratoolkit.2.9.6-1-win64\schema\align\mate-cache.vschema" />
+    <None Include="Data\Bin\sratoolkit.2.9.6-1-win64\schema\align\pileup-stats.vschema" />
+    <None Include="Data\Bin\sratoolkit.2.9.6-1-win64\schema\align\qstat.vschema" />
+    <None Include="Data\Bin\sratoolkit.2.9.6-1-win64\schema\align\refseq.vschema" />
+    <None Include="Data\Bin\sratoolkit.2.9.6-1-win64\schema\align\seq.vschema" />
+    <None Include="Data\Bin\sratoolkit.2.9.6-1-win64\schema\csra2\csra2.vschema" />
+    <None Include="Data\Bin\sratoolkit.2.9.6-1-win64\schema\csra2\read.vschema" />
+    <None Include="Data\Bin\sratoolkit.2.9.6-1-win64\schema\csra2\reference.vschema" />
+    <None Include="Data\Bin\sratoolkit.2.9.6-1-win64\schema\csra2\stats.vschema" />
+    <None Include="Data\Bin\sratoolkit.2.9.6-1-win64\schema\insdc\insdc.vschema" />
+    <None Include="Data\Bin\sratoolkit.2.9.6-1-win64\schema\insdc\seq.vschema" />
+    <None Include="Data\Bin\sratoolkit.2.9.6-1-win64\schema\insdc\sra.vschema" />
+    <None Include="Data\Bin\sratoolkit.2.9.6-1-win64\schema\ncbi\clip.vschema" />
+    <None Include="Data\Bin\sratoolkit.2.9.6-1-win64\schema\ncbi\ncbi.vschema" />
+    <None Include="Data\Bin\sratoolkit.2.9.6-1-win64\schema\ncbi\pnbrdb.vschema" />
+    <None Include="Data\Bin\sratoolkit.2.9.6-1-win64\schema\ncbi\seq-graph.vschema" />
+    <None Include="Data\Bin\sratoolkit.2.9.6-1-win64\schema\ncbi\seq.vschema" />
+    <None Include="Data\Bin\sratoolkit.2.9.6-1-win64\schema\ncbi\spotname.vschema" />
+    <None Include="Data\Bin\sratoolkit.2.9.6-1-win64\schema\ncbi\sra.vschema" />
+    <None Include="Data\Bin\sratoolkit.2.9.6-1-win64\schema\ncbi\stats.vschema" />
+    <None Include="Data\Bin\sratoolkit.2.9.6-1-win64\schema\ncbi\varloc.vschema" />
+    <None Include="Data\Bin\sratoolkit.2.9.6-1-win64\schema\ncbi\wgs-contig.vschema" />
+    <None Include="Data\Bin\sratoolkit.2.9.6-1-win64\schema\sra\454.vschema" />
+    <None Include="Data\Bin\sratoolkit.2.9.6-1-win64\schema\sra\abi.vschema" />
+    <None Include="Data\Bin\sratoolkit.2.9.6-1-win64\schema\sra\generic-fastq.vschema" />
+    <None Include="Data\Bin\sratoolkit.2.9.6-1-win64\schema\sra\helicos.vschema" />
+    <None Include="Data\Bin\sratoolkit.2.9.6-1-win64\schema\sra\illumina.vschema" />
+    <None Include="Data\Bin\sratoolkit.2.9.6-1-win64\schema\sra\ion-torrent.vschema" />
+    <None Include="Data\Bin\sratoolkit.2.9.6-1-win64\schema\sra\nanopore.vschema" />
+    <None Include="Data\Bin\sratoolkit.2.9.6-1-win64\schema\sra\pacbio.vschema" />
+    <None Include="Data\Bin\sratoolkit.2.9.6-1-win64\schema\sra\pevents.vschema" />
+    <None Include="Data\Bin\sratoolkit.2.9.6-1-win64\schema\vdb\built-in.vschema" />
+    <None Include="Data\Bin\sratoolkit.2.9.6-1-win64\schema\vdb\vdb.vschema" />
+    <None Include="Data\Bin\TrimGalore-0.6.5\.travis.yml" />
+    <None Include="Data\Bin\TrimGalore-0.6.5\Changelog.md" />
+    <None Include="Data\Bin\TrimGalore-0.6.5\Docs\Images\Thumbs.db" />
+    <None Include="Data\Bin\TrimGalore-0.6.5\Docs\RRBS_Guide.pdf" />
+    <None Include="Data\Bin\TrimGalore-0.6.5\Docs\Trim_Galore_User_Guide.md" />
+    <None Include="Data\Bin\TrimGalore-0.6.5\LICENSE" />
+    <None Include="Data\Bin\TrimGalore-0.6.5\README.md" />
+    <None Include="Data\Bin\TrimGalore-0.6.5\test_files\4_seqs_with_Ns.fastq.gz" />
+    <None Include="Data\Bin\TrimGalore-0.6.5\test_files\clock_10K_R1.fastq.gz" />
+    <None Include="Data\Bin\TrimGalore-0.6.5\test_files\clock_10K_R2.fastq.gz" />
+    <None Include="Data\Bin\TrimGalore-0.6.5\test_files\colorspace_file.fastq" />
+    <None Include="Data\Bin\TrimGalore-0.6.5\test_files\empty_file.fastq" />
+    <None Include="Data\Bin\TrimGalore-0.6.5\test_files\illumina_100K.fastq.gz" />
+    <None Include="Data\Bin\TrimGalore-0.6.5\test_files\illumina_10K.fastq.gz" />
+    <None Include="Data\Bin\TrimGalore-0.6.5\test_files\illumina_10K_trimmed.fq.gz" />
+    <None Include="Data\Bin\TrimGalore-0.6.5\test_files\nextera_100K.fastq.gz" />
+    <None Include="Data\Bin\TrimGalore-0.6.5\test_files\smallRNA_100K.fastq.gz" />
+    <None Include="Data\Bin\TrimGalore-0.6.5\test_files\smallRNA_100K_R2.fastq.gz" />
+    <None Include="Data\Bin\TrimGalore-0.6.5\test_files\truncated.fq.gz" />
+    <None Include="Data\Bin\TrimGalore-0.6.5\trim_galore" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logo.1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fb-og-ufcspa.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Screenshot_5.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_database_128px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_database_32px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_data_quality_32px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_filter_32px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_settings_32px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_settings_32px_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_database_32px_2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_database_32px_5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_data_quality_32px_2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_filter_and_sort_32px_2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_dna_helix_1.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_dna_helix_32px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_settings_32px_4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_dna_helix_32px_4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_database_32px_9.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_data_quality_32px_5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_filter_and_sort_32px_5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_settings_32px_6.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_dna_helix_3.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_dna_helix_128px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_project_32px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_border_horizontal_32px_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_pie_chart_report_32px_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_connected_16px_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_open_box_16px_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_save_16px_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_delete_16px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_delete_16px_2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_duplicate_48px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_data_quality_128px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_data_quality_48px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_duplicate_48px_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_clone_48px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_electrical_48px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_electrical_48px_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assembly_summary_refseq.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\Bin\bowtie2-2.3.4-mingw-x86_64\bowtie2-align-l-debug.exe" />
+    <Content Include="Data\Bin\bowtie2-2.3.4-mingw-x86_64\bowtie2-align-l.exe" />
+    <Content Include="Data\Bin\bowtie2-2.3.4-mingw-x86_64\bowtie2-align-s-debug.exe" />
+    <Content Include="Data\Bin\bowtie2-2.3.4-mingw-x86_64\bowtie2-align-s.exe" />
+    <Content Include="Data\Bin\bowtie2-2.3.4-mingw-x86_64\bowtie2-build-l-debug.exe" />
+    <Content Include="Data\Bin\bowtie2-2.3.4-mingw-x86_64\bowtie2-build-l.exe" />
+    <Content Include="Data\Bin\bowtie2-2.3.4-mingw-x86_64\bowtie2-build-s-debug.exe" />
+    <Content Include="Data\Bin\bowtie2-2.3.4-mingw-x86_64\bowtie2-build-s.exe" />
+    <Content Include="Data\Bin\bowtie2-2.3.4-mingw-x86_64\bowtie2-inspect-l-debug.exe" />
+    <Content Include="Data\Bin\bowtie2-2.3.4-mingw-x86_64\bowtie2-inspect-l.exe" />
+    <Content Include="Data\Bin\bowtie2-2.3.4-mingw-x86_64\bowtie2-inspect-s-debug.exe" />
+    <Content Include="Data\Bin\bowtie2-2.3.4-mingw-x86_64\bowtie2-inspect-s.exe" />
+    <Content Include="Data\Bin\bowtie2-2.3.4-mingw-x86_64\doc\manual.html" />
+    <Content Include="Data\Bin\bowtie2-2.3.4-mingw-x86_64\doc\style.css" />
+    <Content Include="Data\Bin\FastQC\cisd-jhdf5.jar" />
+    <Content Include="Data\Bin\FastQC\Configuration\adapter_list.txt" />
+    <Content Include="Data\Bin\FastQC\Configuration\contaminant_list.txt" />
+    <Content Include="Data\Bin\FastQC\Configuration\limits.txt" />
+    <Content Include="Data\Bin\FastQC\fastqc_icon.ico" />
+    <Content Include="Data\Bin\FastQC\Help\1 Introduction\1.1 What is FastQC.html" />
+    <Content Include="Data\Bin\FastQC\Help\2 Basic Operations\2.1 Opening a sequence file.html" />
+    <Content Include="Data\Bin\FastQC\Help\2 Basic Operations\2.2 Evaluating Results.html" />
+    <Content Include="Data\Bin\FastQC\Help\2 Basic Operations\2.3 Saving a Report.html" />
+    <Content Include="Data\Bin\FastQC\Help\3 Analysis Modules\1 Basic Statistics.html" />
+    <Content Include="Data\Bin\FastQC\Help\3 Analysis Modules\10 Adapter Content.html" />
+    <Content Include="Data\Bin\FastQC\Help\3 Analysis Modules\11 Kmer Content.html" />
+    <Content Include="Data\Bin\FastQC\Help\3 Analysis Modules\12 Per Tile Sequence Quality.html" />
+    <Content Include="Data\Bin\FastQC\Help\3 Analysis Modules\2 Per Base Sequence Quality.html" />
+    <Content Include="Data\Bin\FastQC\Help\3 Analysis Modules\3 Per Sequence Quality Scores.html" />
+    <Content Include="Data\Bin\FastQC\Help\3 Analysis Modules\4 Per Base Sequence Content.html" />
+    <Content Include="Data\Bin\FastQC\Help\3 Analysis Modules\5 Per Sequence GC Content.html" />
+    <Content Include="Data\Bin\FastQC\Help\3 Analysis Modules\6 Per Base N Content.html" />
+    <Content Include="Data\Bin\FastQC\Help\3 Analysis Modules\7 Sequence Length Distribution.html" />
+    <Content Include="Data\Bin\FastQC\Help\3 Analysis Modules\8 Duplicate Sequences.html" />
+    <Content Include="Data\Bin\FastQC\Help\3 Analysis Modules\9 Overrepresented Sequences.html" />
+    <Content Include="Data\Bin\FastQC\Help\3 Analysis Modules\duplication_levels.png" />
+    <Content Include="Data\Bin\FastQC\Help\3 Analysis Modules\kmer_profiles.png" />
+    <Content Include="Data\Bin\FastQC\Help\3 Analysis Modules\per_base_gc_content.png" />
+    <Content Include="Data\Bin\FastQC\Help\3 Analysis Modules\per_base_n_content.png" />
+    <Content Include="Data\Bin\FastQC\Help\3 Analysis Modules\per_base_quality.png" />
+    <Content Include="Data\Bin\FastQC\Help\3 Analysis Modules\per_base_sequence_content.png" />
+    <Content Include="Data\Bin\FastQC\Help\3 Analysis Modules\per_sequence_gc_content.png" />
+    <Content Include="Data\Bin\FastQC\Help\3 Analysis Modules\per_sequence_quality.png" />
+    <Content Include="Data\Bin\FastQC\Help\3 Analysis Modules\per_tile_quality.png" />
+    <Content Include="Data\Bin\FastQC\Help\3 Analysis Modules\sequence_length_distribution.png" />
+    <Content Include="Data\Bin\FastQC\INSTALL.txt" />
+    <Content Include="Data\Bin\FastQC\jbzip2-0.9.jar" />
+    <Content Include="Data\Bin\FastQC\LICENSE.txt" />
+    <Content Include="Data\Bin\FastQC\LICENSE_JHDF5.txt" />
+    <Content Include="Data\Bin\FastQC\README.txt" />
+    <Content Include="Data\Bin\FastQC\RELEASE_NOTES.txt" />
+    <Content Include="Data\Bin\FastQC\sam-1.103.jar" />
+    <Content Include="Data\Bin\FastQC\Templates\fastqc2fo.xsl" />
+    <Content Include="Data\Bin\FastQC\Templates\header_template.html" />
+    <Content Include="Data\Bin\FastQC\Templates\Icons\error.png" />
+    <Content Include="Data\Bin\FastQC\Templates\Icons\fastqc_icon.png" />
+    <Content Include="Data\Bin\FastQC\Templates\Icons\tick.png" />
+    <Content Include="Data\Bin\FastQC\Templates\Icons\warning.png" />
+    <Content Include="Data\Bin\FastQC\uk\ac\babraham\FastQC\Report\stylesheet.txt" />
+    <Content Include="Data\Bin\FastQC\uk\ac\babraham\FastQC\Resources\error.png" />
+    <Content Include="Data\Bin\FastQC\uk\ac\babraham\FastQC\Resources\fastqc_icon.png" />
+    <Content Include="Data\Bin\FastQC\uk\ac\babraham\FastQC\Resources\fastqc_icon.svg" />
+    <Content Include="Data\Bin\FastQC\uk\ac\babraham\FastQC\Resources\fastqc_icon_100.png" />
+    <Content Include="Data\Bin\FastQC\uk\ac\babraham\FastQC\Resources\tick.png" />
+    <Content Include="Data\Bin\FastQC\uk\ac\babraham\FastQC\Resources\warning.png" />
+    <Content Include="Data\Bin\SAMtools\ace2sam.exe" />
+    <Content Include="Data\Bin\SAMtools\bcftools.exe" />
+    <Content Include="Data\Bin\SAMtools\bgzip.exe" />
+    <Content Include="Data\Bin\SAMtools\htsfile.exe" />
+    <Content Include="Data\Bin\SAMtools\maq2sam-long.exe" />
+    <Content Include="Data\Bin\SAMtools\maq2sam-short.exe" />
+    <Content Include="Data\Bin\SAMtools\md5fa.exe" />
+    <Content Include="Data\Bin\SAMtools\md5sum-lite.exe" />
+    <Content Include="Data\Bin\SAMtools\msys-2.0.dll" />
+    <Content Include="Data\Bin\SAMtools\msys-ncursesw6.dll" />
+    <Content Include="Data\Bin\SAMtools\msys-z.dll" />
+    <Content Include="Data\Bin\SAMtools\samtools.exe" />
+    <Content Include="Data\Bin\SAMtools\tabix.exe" />
+    <Content Include="Data\Bin\SAMtools\varfilter.py" />
+    <Content Include="Data\Bin\SAMtools\wgsim.exe" />
+    <Content Include="Data\Bin\sratoolkit.2.9.6-1-win64\bin\abi-dump.exe" />
+    <Content Include="Data\Bin\sratoolkit.2.9.6-1-win64\bin\align-info.exe" />
+    <Content Include="Data\Bin\sratoolkit.2.9.6-1-win64\bin\blastn_vdb.exe" />
+    <Content Include="Data\Bin\sratoolkit.2.9.6-1-win64\bin\cache-mgr.exe" />
+    <Content Include="Data\Bin\sratoolkit.2.9.6-1-win64\bin\dump-ref-fasta.exe" />
+    <Content Include="Data\Bin\sratoolkit.2.9.6-1-win64\bin\fastq-dump.exe" />
+    <Content Include="Data\Bin\sratoolkit.2.9.6-1-win64\bin\illumina-dump.exe" />
+    <Content Include="Data\Bin\sratoolkit.2.9.6-1-win64\bin\kar.exe" />
+    <Content Include="Data\Bin\sratoolkit.2.9.6-1-win64\bin\kdbmeta.exe" />
+    <Content Include="Data\Bin\sratoolkit.2.9.6-1-win64\bin\latf-load.exe" />
+    <Content Include="Data\Bin\sratoolkit.2.9.6-1-win64\bin\prefetch.exe" />
+    <Content Include="Data\Bin\sratoolkit.2.9.6-1-win64\bin\rcexplain.exe" />
+    <Content Include="Data\Bin\sratoolkit.2.9.6-1-win64\bin\sam-dump.exe" />
+    <Content Include="Data\Bin\sratoolkit.2.9.6-1-win64\bin\sff-dump.exe" />
+    <Content Include="Data\Bin\sratoolkit.2.9.6-1-win64\bin\sra-blastn.exe" />
+    <Content Include="Data\Bin\sratoolkit.2.9.6-1-win64\bin\sra-pileup.exe" />
+    <Content Include="Data\Bin\sratoolkit.2.9.6-1-win64\bin\sra-search.exe" />
+    <Content Include="Data\Bin\sratoolkit.2.9.6-1-win64\bin\sra-stat.exe" />
+    <Content Include="Data\Bin\sratoolkit.2.9.6-1-win64\bin\sra-tblastn.exe" />
+    <Content Include="Data\Bin\sratoolkit.2.9.6-1-win64\bin\srapath.exe" />
+    <Content Include="Data\Bin\sratoolkit.2.9.6-1-win64\bin\tblastn_vdb.exe" />
+    <Content Include="Data\Bin\sratoolkit.2.9.6-1-win64\bin\test-sra.exe" />
+    <Content Include="Data\Bin\sratoolkit.2.9.6-1-win64\bin\vdb-config.exe" />
+    <Content Include="Data\Bin\sratoolkit.2.9.6-1-win64\bin\vdb-copy.exe" />
+    <Content Include="Data\Bin\sratoolkit.2.9.6-1-win64\bin\vdb-decrypt.exe" />
+    <Content Include="Data\Bin\sratoolkit.2.9.6-1-win64\bin\vdb-dump.exe" />
+    <Content Include="Data\Bin\sratoolkit.2.9.6-1-win64\bin\vdb-encrypt.exe" />
+    <Content Include="Data\Bin\sratoolkit.2.9.6-1-win64\bin\vdb-lock.exe" />
+    <Content Include="Data\Bin\sratoolkit.2.9.6-1-win64\bin\vdb-passwd.exe" />
+    <Content Include="Data\Bin\sratoolkit.2.9.6-1-win64\bin\vdb-unlock.exe" />
+    <Content Include="Data\Bin\sratoolkit.2.9.6-1-win64\bin\vdb-validate.exe" />
+    <Content Include="Data\Bin\sratoolkit.2.9.6-1-win64\CHANGES.txt" />
+    <Content Include="Data\Bin\sratoolkit.2.9.6-1-win64\README-blastn.txt" />
+    <Content Include="Data\Bin\sratoolkit.2.9.6-1-win64\README-vdb-config.txt" />
+    <Content Include="Data\Bin\sratoolkit.2.9.6-1-win64\README.md.txt" />
+    <Content Include="Data\Bin\TrimGalore-0.6.5\Docs\Images\adapters.png" />
+    <Content Include="Data\Bin\TrimGalore-0.6.5\Docs\Images\adapters_fixed.png" />
+    <Content Include="Data\Bin\TrimGalore-0.6.5\Docs\Images\fixed_quals.png" />
+    <Content Include="Data\Bin\TrimGalore-0.6.5\Docs\Images\fixed_quals_per_sequence.png" />
+    <Content Include="Data\Bin\TrimGalore-0.6.5\Docs\Images\logo.png" />
+    <Content Include="Data\Bin\TrimGalore-0.6.5\Docs\Images\pigz_bench.png" />
+    <Content Include="Data\Bin\TrimGalore-0.6.5\Docs\Images\poor_quals.png" />
+    <Content Include="Data\Bin\TrimGalore-0.6.5\Docs\Images\poor_q_per_sequence.png" />
+    <Content Include="Data\Bin\TrimGalore-0.6.5\test_files\illumina_100K.fastq.gz_trimming_report.txt" />
+    <Content Include="Data\Bin\TrimGalore-0.6.5\test_files\illumina_10K.fastq.gz_trimming_report.txt" />
+    <Content Include="Data\Bin\TrimGalore-0.6.5\test_files\nextera_100K.fastq.gz_trimming_report.txt" />
+    <Content Include="Data\Bin\TrimGalore-0.6.5\test_files\smallRNA_100K.fastq.gz_trimming_report.txt" />
+    <Content Include="Data\Bin\TrimGalore-0.6.5\test_files\smallRNA_100K_R1.fastq.gz_trimming_report.txt" />
+    <Content Include="Data\Bin\TrimGalore-0.6.5\test_files\smallRNA_100K_R2.fastq.gz_trimming_report.txt" />
+    <None Include="Resources\processing.gif" />
+    <None Include="Resources\icons8_data_24px.png" />
+    <None Include="Resources\icons8_info_32px.png" />
+    <None Include="Resources\logotemp.jpg" />
+    <None Include="Resources\icons8_refresh_16px.png" />
+    <None Include="Resources\icons8_refresh_24px.png" />
+    <None Include="Resources\icons8_barbershop_24px.png" />
+    <None Include="Resources\icons8_previous_24px.png" />
+    <None Include="Resources\icons8_prev_24px.png" />
+    <None Include="Resources\icons8_next_24px.png" />
+    <None Include="Resources\icons8_view_24px.png" />
+    <None Include="Resources\icons8_services_24px.png" />
+    <None Include="Resources\icons8_services_16px.png" />
+    <None Include="Resources\icons8_download_16px.png" />
+    <None Include="Resources\icons8_download_32px.png" />
+    <None Include="Resources\icons8_download_48px.png" />
+    <None Include="Resources\stop_pie_chart_report_48px.png" />
+    <None Include="Resources\icons8_stop_pie_chart_report_48px_1.png" />
+    <None Include="Resources\icons8_stop_pie_chart_report_48px.png" />
+    <None Include="Resources\icons8_stop_pie_chart_report_100px_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Data\Bin\FastQC\Help\1 Introduction\.svn\props\" />
+    <Folder Include="Data\Bin\FastQC\Help\1 Introduction\.svn\tmp\props\" />
+    <Folder Include="Data\Bin\FastQC\Help\2 Basic Operations\.svn\props\" />
+    <Folder Include="Data\Bin\FastQC\Help\2 Basic Operations\.svn\tmp\props\" />
+    <Folder Include="Data\Bin\FastQC\Help\3 Analysis Modules\.svn\props\" />
+    <Folder Include="Data\Bin\FastQC\Help\3 Analysis Modules\.svn\tmp\props\" />
+    <Folder Include="Data\Projects\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
